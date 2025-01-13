@@ -13,12 +13,12 @@ import re
 
 class TyphoonAgent:
     load_dotenv()
-    def __init__(self, temperature: float, base_url: str, model_name: str, dataset_paths: dict, dataset_key: str):
+    def __init__(self, temperature: float, base_url: str, api_key: str, model_name: str, dataset_paths: dict, dataset_key: str):
         self.temperature = temperature
         self.base_url = base_url
         self.model = model_name
         self.dataset_key = dataset_key
-        self.api_key = os.getenv("TYPHOON_API_KEY")
+        self.api_key = api_key #os.getenv("TYPHOON_API_KEY")
         self.llm = self.initialize_llm()
         self.memory = self.initialize_memory()
         self.pandas_agent = PandasAgent(temperature, base_url, model_name, dataset_paths)
